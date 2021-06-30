@@ -7,12 +7,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatChipsModule } from '@angular/material/chips';
-import {MatButtonModule} from '@angular/material/button'
+import {MatButtonModule} from '@angular/material/button';
+import { CardsComponent } from './cards/cards.component';
+import { FooterComponent } from './footer/footer.component';
+import { CardComponent } from './card/card.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
+    CardsComponent,
+    FooterComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
