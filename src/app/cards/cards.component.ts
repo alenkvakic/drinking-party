@@ -32,18 +32,25 @@ export class CardsComponent implements OnInit, OnChanges {
   }
 
   getAnotherRandomPlayerName(): string {
-    let randomName = '';
+    let randomName = 'Random';
     let filteredNames = this.players.filter(player => player.name !== this.randomSelectedPlayer.name);
-    randomName = filteredNames[Math.floor(Math.random()*filteredNames.length)].name
+    if (filteredNames.length > 0) {
+      randomName = filteredNames[Math.floor(Math.random()*filteredNames.length)].name
+    } 
     return randomName;
   }
 
   getRandomCard(): void {
-    let randomCard = this.cards[Math.floor(Math.random()*this.cards.length)];
+    let randomCard = {...this.cards[Math.floor(Math.random()*this.cards.length)]};
     randomCard.rule = randomCard.rule.replace("%playerX", this.getAnotherRandomPlayerName());
     randomCard.rule = randomCard.rule.replace("%playerY", this.getAnotherRandomPlayerName());
 
     this.randomCard = randomCard;
+  }
+
+  nextCard(): void {
+    this.getRandomPlayer();
+    this.getRandomCard();
   }
 
 }
