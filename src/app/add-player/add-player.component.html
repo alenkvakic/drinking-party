@@ -1,10 +1,11 @@
+<h2 class="mt-8 mb-2 text-2xl font-medium text-indigo-500">Add players</h2>
 <form [formGroup]="playerAddForm" (ngSubmit)="onSubmit()" style="margin-bottom: 1rem;">
 
   <div>
     <label for="name">
       Player Name
     </label>
-    <input id="name" type="text" formControlName="name" required>
+    <input id="name" class="border-2 border-indigo-200" type="text" formControlName="name" required>
   </div>
 
   <!-- Gender -->

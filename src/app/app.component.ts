@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PlayerModel } from './add-player/add-player.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'drinking-party';
+  players: PlayerModel[] = [];
+
+  gameStartEventHandler(event: PlayerModel[]) {
+    console.log("gameStartEventHandler: ", event);
+    this.players = event;
+  }
+
+  resetPlayers() {
+    this.players = [];
+    console.log('clear players!');
+  }
 }

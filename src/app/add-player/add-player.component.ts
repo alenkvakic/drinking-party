@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { PlayersService } from '../players.service';
 
-interface PlayerModel {
+export interface PlayerModel {
   name: string;
   gender: string;
 }
@@ -19,9 +20,11 @@ export class AddPlayerComponent implements OnInit {
     gender: 'male',
   });
 
+  @Output() gameStart = new EventEmitter<PlayerModel[]>();
 
   constructor(
     private fb: FormBuilder,
+    private playersService: PlayersService,
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +48,8 @@ export class AddPlayerComponent implements OnInit {
 
   startGame(): void {
     console.log('Start!');
+    this.playersService.addPlayers(this.playerList);
+    this.gameStart.emit(this.playerList);
   }
   
   resetPlayers(): void {
