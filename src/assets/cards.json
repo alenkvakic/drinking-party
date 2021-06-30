@@ -1,0 +1,40 @@
+{
+    "cardArray": [
+      {
+        "id": "1",
+        "amountInDeck": 4,
+        "rule": "Chug your drink",
+        "drink": true,
+        "intercourse": false,
+        "forBoysOrGirls": "both",
+        "sexy": false
+      },
+      {
+        "id": "2",
+        "amountInDeck": 4,
+        "rule": "Kiss the person left of you or chug your drink",
+        "drink": true,
+        "intercourse": true,
+        "forBoysOrGirls": "both",
+        "sexy": true
+      },
+      {
+        "id": "3",
+        "amountInDeck": 2,
+        "rule": "Show your boobs to %playerX",
+        "drink": false,
+        "intercourse": true,
+        "forBoysOrGirls": "girls",
+        "sexy": true
+      },
+      {
+        "id": "4",
+        "amountInDeck": 2,
+        "rule": "Drink two shot with %playerX or kiss %playerY",
+        "drink": true,
+        "intercourse": true,
+        "forBoysOrGirls": "both",
+        "sexy": true
+      }
+    ]
+  }
