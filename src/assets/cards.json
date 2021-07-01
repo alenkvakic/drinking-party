@@ -21,7 +21,7 @@
       {
         "id": "3",
         "amountInDeck": 2,
-        "rule": "Show your boobs to %playerX",
+        "rule": "Show your boobs to %guyX",
         "drink": false,
         "intercourse": true,
         "forBoysOrGirls": "girls",
@@ -30,10 +30,19 @@
       {
         "id": "4",
         "amountInDeck": 2,
-        "rule": "Drink two shot with %playerX or kiss %playerY",
+        "rule": "Drink two shots with %playerX or kiss %playerY",
         "drink": true,
         "intercourse": true,
         "forBoysOrGirls": "both",
+        "sexy": true
+      },
+      {
+        "id": "5",
+        "amountInDeck": 2,
+        "rule": "Show your hands to %girlX",
+        "drink": false,
+        "intercourse": true,
+        "forBoysOrGirls": "boys",
         "sexy": true
       }
     ]

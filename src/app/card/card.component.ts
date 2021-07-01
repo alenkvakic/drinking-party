@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { PlayerModel } from '../add-player/add-player.component';
 
 export interface Card {
   id:             string;
@@ -15,16 +16,18 @@ export interface Card {
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent implements OnInit, OnChanges {
   logoPath = "";
-  @Input() rule = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt';
-  @Input() playerName = 'John Doe';
-  @Input() gender = 'male';
+  @Input() card: Card = {} as Card;
+  @Input() player: PlayerModel = {name: 'Random Dude', gender: 'male'};
 
   constructor() { }
 
   ngOnInit(): void {
-    this.logoPath = `./../../assets/images/${this.gender}.png`;
+  }
+
+  ngOnChanges(changes: SimpleChanges) { 
+    this.logoPath = `./../../assets/images/${this.player.gender}.png`;
   }
 
 }
