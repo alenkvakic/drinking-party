@@ -349,7 +349,7 @@
   <app-add-player *ngIf="players.length === 0" (gameStart)="gameStartEventHandler($event)"></app-add-player>
   <app-cards *ngIf="players.length > 0" [players]="players"></app-cards>
 
-  <div class="pt-2">
+  <div *ngIf="players.length > 0" class="pt-2">
     <button class="py-1 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-200 z-10" (click)="resetPlayers()">Back to main menu</button>
   </div>
 

@@ -7,10 +7,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatChipsModule } from '@angular/material/chips';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CardsComponent } from './cards/cards.component';
 import { FooterComponent } from './footer/footer.component';
-import { CardComponent } from './card/card.component'
+import { CardComponent } from './card/card.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { CardComponent } from './card/card.component'
     AddPlayerComponent,
     CardsComponent,
     FooterComponent,
-    CardComponent
+    CardComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { CardComponent } from './card/card.component'
     MatSliderModule,
     MatChipsModule,
     MatButtonModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

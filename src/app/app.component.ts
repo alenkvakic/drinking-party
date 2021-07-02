@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PlayerModel } from './add-player/add-player.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +12,20 @@ export class AppComponent {
   title = 'drinking-party';
   players: PlayerModel[] = [];
 
+  constructor(public dialog: MatDialog) {}
+
   gameStartEventHandler(event: PlayerModel[]) {
     console.log("gameStartEventHandler: ", event);
     this.players = event;
   }
 
   resetPlayers() {
-    this.players = [];
-    console.log('clear players!');
+    let dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(reset => {
+      if (reset) {
+        this.players = [];
+      }
+    });
   }
 }
