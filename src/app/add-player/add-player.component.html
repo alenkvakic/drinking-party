@@ -1,36 +1,38 @@
-<h2 class="mt-8 mb-2 text-2xl font-medium text-indigo-500">Add players</h2>
-<form [formGroup]="playerAddForm" (ngSubmit)="onSubmit()" style="margin-bottom: 1rem;">
+<div class="max-w-md py-4 px-8 shadow-lg rounded-lg my-20" style="background-color: white;">
+  <h2 class="mt-8 mb-2 text-2xl font-medium text-center text-indigo-500">Add players</h2>
+  <form [formGroup]="playerAddForm" (ngSubmit)="onSubmit()" style="margin-bottom: 1rem;">
 
-  <div>
-    <label for="name">
-      Player Name
-    </label>
-    <input id="name" class="border-2 border-indigo-200" type="text" formControlName="name" required>
+    <div>
+      <label for="name">
+        Player Name:
+      </label>
+      <input id="name" class="border-2 border-indigo-200" type="text" formControlName="name" required>
+    </div>
+
+    <!-- Gender -->
+    <div>
+      <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
+      <label class="custom-control-label" for="male">Male</label>
+    </div>
+
+    <div>
+      <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
+      <label class="custom-control-label" for="female">Female</label>
+    </div>
+
+    <button mat-flat-button color="primary" type="submit">Add Player</button>
+
+  </form>
+
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+    <mat-chip *ngFor="let chip of playerList" selected [color]="chip.gender == 'female' ? 'accent' : 'primary'">
+      {{chip.name}}
+    </mat-chip>
+  </mat-chip-list>
+
+  <div style="margin-top: 1rem;">
+    <button mat-stroked-button color="accent" (click)="removeLastPlayer()">Remove Last</button>
+    <button mat-stroked-button color="primary" (click)="startGame()">Start Game</button>
+    <button mat-stroked-button color="warn" (click)="resetPlayers()">Reset Players</button>
   </div>
-
-  <!-- Gender -->
-  <div>
-    <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
-    <label class="custom-control-label" for="male">Male</label>
-  </div>
-
-  <div>
-    <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
-    <label class="custom-control-label" for="female">Female</label>
-  </div>
-
-  <button mat-flat-button color="primary" type="submit">Add Player</button>
-
-</form>
-
-<mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
-  <mat-chip *ngFor="let chip of playerList" selected [color]="chip.gender == 'female' ? 'accent' : 'primary'">
-    {{chip.name}}
-  </mat-chip>
-</mat-chip-list>
-
-<div style="margin-top: 1rem;">
-  <button mat-stroked-button color="accent" (click)="removeLastPlayer()">Remove Last</button>
-  <button mat-stroked-button color="primary" (click)="startGame()">Start Game</button>
-  <button mat-stroked-button color="warn" (click)="resetPlayers()">Reset Players</button>
 </div>
