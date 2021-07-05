@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PlayerModel } from '../add-player/add-player.component';
 import { Card } from '../card/card.component';
+import { CardsService } from '../cards.service';
 import { PlayersService } from '../players.service';
 import data from './../../../src/assets/cards.json';
 
@@ -17,12 +18,16 @@ export class CardsComponent implements OnInit, OnChanges {
 
   @Input() players: PlayerModel[] = [];
 
-  constructor(private playersService: PlayersService) { }
+  constructor(
+    private playersService: PlayersService,
+    private cardsService: CardsService,
+    ) { }
 
   ngOnInit(): void {
+    this.cardsService.getCards().subscribe(cards => console.log('subscribed all cards:', cards));
   }
 
-  ngOnChanges(changes: SimpleChanges) { 
+  ngOnChanges(changes: SimpleChanges) {
     console.log("basically game starts: ", changes);
     this.getRandomPlayer();
     this.getRandomCard();
@@ -50,7 +55,7 @@ export class CardsComponent implements OnInit, OnChanges {
     if (filteredNames.length > 0) {
       randomName = filteredNames[Math.floor(Math.random()*filteredNames.length)].name
       this.playerNamesAlreadyInCards.push(randomName);
-    } 
+    }
     return randomName;
   }
 
@@ -58,22 +63,22 @@ export class CardsComponent implements OnInit, OnChanges {
     const preparedCards = this.setupDeckForGender([...this.cards]);
     let randomCard = {...preparedCards[Math.floor(Math.random()*preparedCards.length)]};
 
-    if (randomCard.rule.includes('%playerX')) 
+    if (randomCard.rule.includes('%playerX'))
       randomCard.rule = randomCard.rule.replace('%playerX', this.getAnotherRandomPlayerName());
 
-    if (randomCard.rule.includes('%playerY')) 
+    if (randomCard.rule.includes('%playerY'))
       randomCard.rule = randomCard.rule.replace('%playerY', this.getAnotherRandomPlayerName());
 
-    if (randomCard.rule.includes('%guyX')) 
+    if (randomCard.rule.includes('%guyX'))
       randomCard.rule = randomCard.rule.replace('%guyX', this.getAnotherRandomPlayerName('male'));
-    
-    if (randomCard.rule.includes('%guyY')) 
+
+    if (randomCard.rule.includes('%guyY'))
       randomCard.rule = randomCard.rule.replace('%guyY', this.getAnotherRandomPlayerName('male'));
-    
-    if (randomCard.rule.includes('%girlX')) 
+
+    if (randomCard.rule.includes('%girlX'))
       randomCard.rule = randomCard.rule.replace('%girlX', this.getAnotherRandomPlayerName('female'));
-    
-    if (randomCard.rule.includes('%girlY')) 
+
+    if (randomCard.rule.includes('%girlY'))
       randomCard.rule = randomCard.rule.replace('%girlY', this.getAnotherRandomPlayerName('female'));
 
     this.randomCard = randomCard;
