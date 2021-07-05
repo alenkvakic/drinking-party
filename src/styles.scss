@@ -4,6 +4,24 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "utilities/_variables";
+
+// @import "~@angular/material/theming";
+// @include mat-core();
+// $angular-primary: mat-palette($mat-teal, 500, 100, 900);
+// $angular-accent: mat-palette($mat-pink, A200, A100, A400);
+// $angular-warn: mat-palette($mat-red);
+// $angular-default-theme: mat-light-theme(
+//   (
+//     color: (
+//       primary: $angular-primary,
+//       accent: $angular-accent,
+//       warn: $angular-warn,
+//     ),
+//   )
+// );
+// @include angular-material-theme($angular-default-theme);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
