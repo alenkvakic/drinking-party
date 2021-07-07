@@ -24,3 +24,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } // background-color: black; background-image: url('./assets/images/bg1.jpg');
+.card-shadow{
+    background-color: $card-bg;
+    box-shadow: 1px 1px 10px 1px rgb(250, 234, 174);
+}

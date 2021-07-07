@@ -7,6 +7,7 @@
         "drink": true,
         "intercourse": false,
         "forBoysOrGirls": "both",
+        "expectsBoyOrGirl": "both",
         "sexy": false
       },
       {
@@ -16,6 +17,7 @@
         "drink": true,
         "intercourse": true,
         "forBoysOrGirls": "both",
+        "expectsBoyOrGirl": "both",
         "sexy": true
       },
       {
@@ -25,6 +27,7 @@
         "drink": false,
         "intercourse": true,
         "forBoysOrGirls": "girls",
+        "expectsBoyOrGirl": "boy",
         "sexy": true
       },
       {
@@ -34,6 +37,7 @@
         "drink": true,
         "intercourse": true,
         "forBoysOrGirls": "both",
+        "expectsBoyOrGirl": "both",
         "sexy": true
       },
       {
@@ -43,6 +47,7 @@
         "drink": false,
         "intercourse": true,
         "forBoysOrGirls": "boys",
+        "expectsBoyOrGirl": "girl",
         "sexy": true
       }
     ]

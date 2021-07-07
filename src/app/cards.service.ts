@@ -11,17 +11,39 @@ import { PlayerModel } from './add-player/add-player.component';
 export class CardsService {
   storedCards: Card[] = [];
   cards: Card[] = data.cardArray;
-  allCards$: BehaviorSubject<Card[]> = new BehaviorSubject<Card[]>([]);
+  allCardsSubject: BehaviorSubject<Card[]> = new BehaviorSubject<Card[]>([]);
   randomIndex = 0;
   randomSelectedPlayer: PlayerModel = {} as PlayerModel;
   playerNamesAlreadyInCards: string[] = [];
   initial = true;
+  isFinished = false;
+  dirtyMode = true;
 
   constructor() {
     this.resetCards();
   }
 
+  filterGender(players: PlayerModel[]) {
+    let allCards: Card[] = [...this.storedCards];
+    const hasGirls = players.some(player => player.gender === 'female')
+    const hasBoys = players.some(player => player.gender === 'male')
+
+    if (!hasGirls) {
+      allCards = allCards.filter(card => card.forBoysOrGirls !== 'girls' && card.expectsBoyOrGirl !== 'girl');
+    }
+    if (!hasBoys) {
+      allCards = allCards.filter(card => card.forBoysOrGirls !== 'boys' && card.expectsBoyOrGirl !== 'boy');
+    }
+    if (!this.dirtyMode) {
+      allCards = allCards.filter(card => !card.sexy);
+    }
+
+    this.storedCards = allCards;
+    this.allCardsSubject.next(allCards);
+  }
+
   resetCards(): void {
+    this.isFinished = false;
     this.initial = true;
     let allCards: Card[] = [];
     this.cards.forEach(card => {
@@ -30,11 +52,15 @@ export class CardsService {
       }
     });
     this.storedCards = allCards;
-    this.allCards$.next(allCards);
+    this.allCardsSubject.next(allCards);
   }
 
-  getCards(): Observable<Card[]> {
-    return this.allCards$.asObservable();
+  getCards$(): Observable<Card[]> {
+    return this.allCardsSubject.asObservable();
+  }
+
+  toggleDirtyMode(flag: boolean): void {
+    this.dirtyMode = flag;
   }
 
   setupDeckForGender(player: PlayerModel, cards: Card[]): Card[] {
@@ -83,9 +109,6 @@ export class CardsService {
     const preparedCards = this.setupDeckForGender(selectedPlayer, [...this.storedCards]);
     this.randomIndex = Math.floor(Math.random()*preparedCards.length);
     let randomCard = {...preparedCards[this.randomIndex]};
-    console.log('randomIndex: ', this.randomIndex);
-    console.log('randomCard: ', randomCard);
-    console.log('preparedCards: ', preparedCards);
 
     if (preparedCards.length > 0) {
       if (randomCard.rule.includes('%playerX'))
@@ -106,17 +129,20 @@ export class CardsService {
       if (randomCard.rule.includes('%girlY'))
         randomCard.rule = randomCard.rule.replace('%girlY', this.getAnotherRandomPlayerName(allPlayers, 'female'));
     } else {
+      this.isFinished = true;
       return {
-        id: "x",
+        id: "finish",
         amountInDeck: 1,
         rule: "Unlucky you! Finish your drink and the game is over",
         drink: true,
         intercourse: false,
         forBoysOrGirls: "both",
+        expectsBoyOrGirl: "both",
         sexy: false
       }
     }
 
+    console.log('preparedCards: ', preparedCards);
     this.initial = false;
     return randomCard;
   }
@@ -124,7 +150,7 @@ export class CardsService {
   removeCard(): void {
     if (this.randomIndex !== undefined && !this.initial) {
       this.storedCards.splice(this.randomIndex, 1);
-      this.allCards$.next(this.storedCards);
+      this.allCardsSubject.next(this.storedCards);
     }
   }
 }

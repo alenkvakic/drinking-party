@@ -1,0 +1,5 @@
+@import "../../utilities/variables";
+
+::ng-deep.mat-dialog-container {
+    background-color: $card-bg;
+}

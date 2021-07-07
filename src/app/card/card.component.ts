@@ -8,6 +8,7 @@ export interface Card {
   drink:          boolean;
   intercourse:    boolean;
   forBoysOrGirls: string;
+  expectsBoyOrGirl: string;
   sexy:           boolean;
 }
 

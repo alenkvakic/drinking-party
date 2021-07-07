@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { CardsService } from '../cards.service';
 import { PlayersService } from '../players.service';
 
 export interface PlayerModel {
@@ -25,6 +26,7 @@ export class AddPlayerComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private playersService: PlayersService,
+    private cardsService: CardsService,
   ) { }
 
   ngOnInit(): void {
@@ -42,12 +44,15 @@ export class AddPlayerComponent implements OnInit {
     console.log('playerList: ', this.playerList);
   }
 
+  toggleDirtyMode(event: any) {
+    this.cardsService.toggleDirtyMode(event.target.checked);
+  }
+
   removeLastPlayer(): void {
     this.playerList.splice(-1,1);
   }
 
   startGame(): void {
-    console.log('Start!');
     this.playersService.addPlayers(this.playerList);
     this.gameStart.emit(this.playerList);
   }

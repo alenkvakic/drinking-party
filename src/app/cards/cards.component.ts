@@ -1,9 +1,8 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PlayerModel } from '../add-player/add-player.component';
 import { Card } from '../card/card.component';
 import { CardsService } from '../cards.service';
-import { PlayersService } from '../players.service';
 import data from './../../../src/assets/cards.json';
 
 @Component({
@@ -11,7 +10,7 @@ import data from './../../../src/assets/cards.json';
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss']
 })
-export class CardsComponent implements OnInit, OnChanges, OnDestroy {
+export class CardsComponent implements OnChanges {
   cards: Card[] = data.cardArray;
   randomSelectedPlayer: PlayerModel = {} as PlayerModel;
   randomCard: Card = {} as Card;
@@ -21,16 +20,12 @@ export class CardsComponent implements OnInit, OnChanges, OnDestroy {
   @Input() players: PlayerModel[] = [];
 
   constructor(
-    private playersService: PlayersService,
     private cardsService: CardsService,
     ) { }
 
-  ngOnInit(): void {
-    this.sub = this.cardsService.getCards().subscribe(cards => console.log('subscribed all cards:', cards));
-  }
-
   ngOnChanges(changes: SimpleChanges) {
     console.log("basically game starts: ", changes);
+    this.cardsService.filterGender(this.players);
     this.getRandomPlayer();
     this.getRandomCard();
   }
@@ -47,9 +42,5 @@ export class CardsComponent implements OnInit, OnChanges, OnDestroy {
     this.cardsService.clearPlayerNamesInCards();
     this.getRandomPlayer();
     this.getRandomCard();
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
   }
 }

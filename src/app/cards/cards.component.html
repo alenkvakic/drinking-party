@@ -3,6 +3,6 @@
     [card]="randomCard"
     ></app-card>
 
-<div class="pt-2 flex justify-center">
+<div *ngIf="randomCard.id !== 'finish'" class="pt-2 flex justify-center">
     <button class="py-1 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-pink-500 z-10" (click)="nextCard()">Next Card</button>
 </div>

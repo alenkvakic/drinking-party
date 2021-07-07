@@ -1,26 +1,42 @@
-<div class="max-w-md py-4 px-8 shadow-lg rounded-lg my-20" style="background-color: white;">
+<div class="max-w-md py-4 px-8 rounded-lg my-20 card-shadow">
   <h2 class="mt-8 mb-2 text-2xl font-medium text-center text-indigo-500">Add players</h2>
   <form [formGroup]="playerAddForm" (ngSubmit)="onSubmit()" style="margin-bottom: 1rem;">
 
-    <div>
-      <label for="name">
-        Player Name:
-      </label>
-      <input id="name" class="border-2 border-indigo-200" type="text" formControlName="name" required>
-    </div>
+    <div class="flex flex-col">
+      <div>
+        <label for="name" class="mr-1" style="color: #3f51b5;">
+          Player Name:
+        </label>
+        <input id="name" class="border-2 border-indigo-200" type="text" formControlName="name" required>
+      </div>
 
-    <!-- Gender -->
-    <div>
-      <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
-      <label class="custom-control-label" for="male">Male</label>
-    </div>
+      <!-- Gender -->
+      <div class="pt-3">
+        <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
+        <label class="custom-control-label pl-2" for="male">
+          <img
+            width="40"
+            class="inline-block"
+            alt="Male Logo"
+            src="../../assets/images/male.png"
+          />
+        </label>
+      </div>
 
-    <div>
-      <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
-      <label class="custom-control-label" for="female">Female</label>
-    </div>
+      <div class="pb-3">
+        <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
+        <label class="custom-control-label pl-2" for="female">
+          <img
+            width="40"
+            class="inline-block"
+            alt="Female Logo"
+            src="../../assets/images/female.png"
+          />
+        </label>
+      </div>
 
-    <button mat-flat-button color="primary" type="submit">Add Player</button>
+      <button mat-flat-button color="primary" type="submit">Add Player</button>
+    </div>
 
   </form>
 
@@ -30,9 +46,16 @@
     </mat-chip>
   </mat-chip-list>
 
-  <div style="margin-top: 1rem;">
-    <button mat-stroked-button color="accent" (click)="removeLastPlayer()">Remove Last</button>
-    <button mat-stroked-button color="primary" (click)="startGame()">Start Game</button>
-    <button mat-stroked-button color="warn" (click)="resetPlayers()">Reset Players</button>
+  <div class="flex mt-6">
+    <label class="flex items-center">
+      <input type="checkbox" class="form-checkbox" (change)="toggleDirtyMode($event)" checked>
+      <span class="ml-2 text-sm" style="color: #3f51b5;">R-Rated Version</span>
+    </label>
+  </div>
+
+  <div class="mt-1 flex flex-col sm:flex-row mt-4">
+    <button mat-stroked-button color="accent" class="flex-1" [disabled]="playerList.length === 0" (click)="removeLastPlayer()">Remove Last</button>
+    <button mat-stroked-button color="primary" class="flex-1" [disabled]="playerList.length === 0" (click)="startGame()">Start Game</button>
+    <button mat-stroked-button color="warn" class="flex-1" [disabled]="playerList.length === 0" (click)="resetPlayers()">Reset Players</button>
   </div>
 </div>
