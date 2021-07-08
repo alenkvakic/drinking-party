@@ -444,7 +444,7 @@
         "id": "X",
         "amountInDeck": 1,
         "title": "Bipolar",
-        "rule": "Slap the player on the left and kiss the player after.",
+        "rule": "Slap the player on the left and kiss the player after",
         "drink": true,
         "intercourse": true,
         "forBoysOrGirls": "both",
@@ -466,7 +466,7 @@
         "id": "X",
         "amountInDeck": 1,
         "title": "Dracula",
-        "rule": "Bite a Player of your choice in the neck",
+        "rule": "Bite a player of your choice in the neck",
         "drink": false,
         "intercourse": true,
         "forBoysOrGirls": "both",
@@ -648,6 +648,17 @@
         "forBoysOrGirls": "both",
         "expectsBoyOrGirl": "both",
         "sexy": false
+      },
+      {
+        "id": "X",
+        "amountInDeck": 4,
+        "title": "Undress",
+        "rule": "Take one piece of cloth off",
+        "drink": false,
+        "intercourse": false,
+        "forBoysOrGirls": "girls",
+        "expectsBoyOrGirl": "both",
+        "sexy": true
       }
     ]
   }
