@@ -133,6 +133,7 @@ export class CardsService {
       return {
         id: "finish",
         amountInDeck: 1,
+        title: "The End",
         rule: "Unlucky you! Finish your drink and the game is over",
         drink: true,
         intercourse: false,
