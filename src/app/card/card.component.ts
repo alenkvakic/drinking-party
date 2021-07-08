@@ -2,14 +2,15 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { PlayerModel } from '../add-player/add-player.component';
 
 export interface Card {
-  id:             string;
-  amountInDeck:   number;
-  rule:           string;
-  drink:          boolean;
-  intercourse:    boolean;
+  id: string;
+  amountInDeck: number;
+  title?: string;
+  rule: string;
+  drink: boolean;
+  intercourse: boolean;
   forBoysOrGirls: string;
   expectsBoyOrGirl: string;
-  sexy:           boolean;
+  sexy: boolean;
 }
 
 @Component({

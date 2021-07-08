@@ -12,7 +12,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CardsComponent } from './cards/cards.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardComponent } from './card/card.component';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component'
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { DebounceClickDirective } from './debounce-click.directive'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     CardsComponent,
     FooterComponent,
     CardComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    DebounceClickDirective
   ],
   imports: [
     BrowserModule,
