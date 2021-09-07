@@ -1,5 +1,7 @@
 # DrinkingParty
 
+This project was done just for fun to showcase on a real world example how quickly you can convert an idea into something workable, playable. It was made quickly and in a rush so no clean code or style guides were followed.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
 
 ## Development server
