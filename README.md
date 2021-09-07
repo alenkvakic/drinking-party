@@ -1,6 +1,8 @@
 # DrinkingParty
 
-A drinking game to play with friends - distinguishes between male and female for more interactive cards. Add players. Start game and follow the shown cards rules. Live-Demo: https://drinking-party.vercel.app/
+A drinking game to play with friends - distinguishes between male and female for more interactive cards. Add players. Start game and follow the shown cards rules. 
+
+Live-Demo: https://drinking-party.vercel.app/
 
 This project was done just for fun to showcase on a real world example how quickly you can convert an idea into something workable, playable. It was made quickly and in a rush so no clean code or style guides were followed.
 
