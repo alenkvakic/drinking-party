@@ -12,7 +12,8 @@ export class CardsService {
   storedCards: Card[] = [];
   cards: Card[] = data.cardArray;
   allCardsSubject: BehaviorSubject<Card[]> = new BehaviorSubject<Card[]>([]);
-  randomIndex = 0;
+  randomIndex: number | undefined = undefined;
+  randomCard!: Card;
   randomSelectedPlayer: PlayerModel = {} as PlayerModel;
   playerNamesAlreadyInCards: string[] = [];
   initial = true;
@@ -108,26 +109,26 @@ export class CardsService {
     this.removeCard();
     const preparedCards = this.setupDeckForGender(selectedPlayer, [...this.storedCards]);
     this.randomIndex = Math.floor(Math.random()*preparedCards.length);
-    let randomCard = {...preparedCards[this.randomIndex]};
+    this.randomCard = {...preparedCards[this.randomIndex]};
 
     if (preparedCards.length > 0) {
-      if (randomCard.rule.includes('%playerX'))
-        randomCard.rule = randomCard.rule.replace('%playerX', this.getAnotherRandomPlayerName(allPlayers));
+      if (this.randomCard.rule.includes('%playerX'))
+        this.randomCard.rule = this.randomCard.rule.replace('%playerX', this.getAnotherRandomPlayerName(allPlayers));
 
-      if (randomCard.rule.includes('%playerY'))
-        randomCard.rule = randomCard.rule.replace('%playerY', this.getAnotherRandomPlayerName(allPlayers));
+      if (this.randomCard.rule.includes('%playerY'))
+        this.randomCard.rule = this.randomCard.rule.replace('%playerY', this.getAnotherRandomPlayerName(allPlayers));
 
-      if (randomCard.rule.includes('%guyX'))
-        randomCard.rule = randomCard.rule.replace('%guyX', this.getAnotherRandomPlayerName(allPlayers, 'male'));
+      if (this.randomCard.rule.includes('%guyX'))
+        this.randomCard.rule = this.randomCard.rule.replace('%guyX', this.getAnotherRandomPlayerName(allPlayers, 'male'));
 
-      if (randomCard.rule.includes('%guyY'))
-        randomCard.rule = randomCard.rule.replace('%guyY', this.getAnotherRandomPlayerName(allPlayers, 'male'));
+      if (this.randomCard.rule.includes('%guyY'))
+        this.randomCard.rule = this.randomCard.rule.replace('%guyY', this.getAnotherRandomPlayerName(allPlayers, 'male'));
 
-      if (randomCard.rule.includes('%girlX'))
-        randomCard.rule = randomCard.rule.replace('%girlX', this.getAnotherRandomPlayerName(allPlayers, 'female'));
+      if (this.randomCard.rule.includes('%girlX'))
+        this.randomCard.rule = this.randomCard.rule.replace('%girlX', this.getAnotherRandomPlayerName(allPlayers, 'female'));
 
-      if (randomCard.rule.includes('%girlY'))
-        randomCard.rule = randomCard.rule.replace('%girlY', this.getAnotherRandomPlayerName(allPlayers, 'female'));
+      if (this.randomCard.rule.includes('%girlY'))
+        this.randomCard.rule = this.randomCard.rule.replace('%girlY', this.getAnotherRandomPlayerName(allPlayers, 'female'));
     } else {
       this.isFinished = true;
       return {
@@ -142,15 +143,19 @@ export class CardsService {
         sexy: false
       }
     }
+  
+    console.log('preparedCards (done filtering for gender and available cards for this player): ', preparedCards);
 
-    console.log('preparedCards: ', preparedCards);
     this.initial = false;
-    return randomCard;
+    return this.randomCard;
   }
 
   removeCard(): void {
     if (this.randomIndex !== undefined && !this.initial) {
-      this.storedCards.splice(this.randomIndex, 1);
+      const indexToRemove = this.storedCards.indexOf(this.randomCard);
+      console.log('card to remove: ', this.randomCard);
+      this.storedCards.splice(indexToRemove, 1);
+      console.log('deck after remove: ', this.storedCards);
       this.allCardsSubject.next(this.storedCards);
     }
   }
