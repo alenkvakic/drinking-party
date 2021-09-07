@@ -46,7 +46,7 @@
       },
       {
         "id": "8",
-        "amountInDeck": 3,
+        "amountInDeck": 2,
         "title": "Give 2",
         "rule": "Pick a player to drink twice",
         "drink": true,
@@ -155,17 +155,6 @@
         "sexy": false
       },
       {
-        "id": "18",
-        "amountInDeck": 1,
-        "title": "Flip a cup!",
-        "rule": "Flip a cup and drink once for every failed attempt. If there is no cup, drink 5",
-        "drink": true,
-        "intercourse": false,
-        "forBoysOrGirls": "both",
-        "expectsBoyOrGirl": "both",
-        "sexy": false
-      },
-      {
         "id": "19",
         "amountInDeck": 1,
         "title": "Giraffe",
@@ -193,17 +182,6 @@
         "title": "Bipolar",
         "rule": "Insult %playerX and compliment %playerY",
         "drink": false,
-        "intercourse": false,
-        "forBoysOrGirls": "both",
-        "expectsBoyOrGirl": "both",
-        "sexy": false
-      },
-      {
-        "id": "22",
-        "amountInDeck": 1,
-        "title": "Rainbow Warrior",
-        "rule": "Pick a color, everyone wearing that color drinks",
-        "drink": true,
         "intercourse": false,
         "forBoysOrGirls": "both",
         "expectsBoyOrGirl": "both",
@@ -245,7 +223,7 @@
       {
         "id": "X",
         "amountInDeck": 3,
-        "title": "Rule",
+        "title": "New Rule - old is gone!",
         "rule": "Make up a rule that everyone must follow until another rule card is drawn. Everytime someone breaks the rule, they must drink",
         "drink": true,
         "intercourse": false,
@@ -256,7 +234,7 @@
       {
         "id": "X",
         "amountInDeck": 1,
-        "title": "Cat Lady",
+        "title": "Cat Ladies",
         "rule": "All cat owners drink once",
         "drink": true,
         "intercourse": false,
@@ -366,19 +344,8 @@
       {
         "id": "X",
         "amountInDeck": 1,
-        "title": "Liar Liar",
-        "rule": "Tell everyone your most recent lie",
-        "drink": false,
-        "intercourse": false,
-        "forBoysOrGirls": "both",
-        "expectsBoyOrGirl": "both",
-        "sexy": false
-      },
-      {
-        "id": "X",
-        "amountInDeck": 1,
         "title": "Mute",
-        "rule": "Cant talk until your next turn",
+        "rule": "Cant talk until your next turn - if you talk, you drink",
         "drink": true,
         "intercourse": false,
         "forBoysOrGirls": "both",
@@ -530,20 +497,9 @@
       },
       {
         "id": "X",
-        "amountInDeck": 3,
-        "title": "New Question Master",
-        "rule": "If a player replies to a question they drink once",
-        "drink": true,
-        "intercourse": false,
-        "forBoysOrGirls": "both",
-        "expectsBoyOrGirl": "both",
-        "sexy": false
-      },
-      {
-        "id": "X",
         "amountInDeck": 1,
         "title": "Curious",
-        "rule": "Have you ever seen %playerX naked? If no, drink 3",
+        "rule": "Have you ever seen %playerX naked? If no, drink 3. If yes, nice",
         "drink": true,
         "intercourse": false,
         "forBoysOrGirls": "both",
@@ -563,7 +519,7 @@
       },
       {
         "id": "X",
-        "amountInDeck": 2,
+        "amountInDeck": 1,
         "title": "Catching up",
         "rule": "Did you drink more then %playerX? If not, drink 4",
         "drink": true,
@@ -643,17 +599,6 @@
         "amountInDeck": 1,
         "title": "Simon",
         "rule": "Everyone plays 'Simon Says' and you are Simon. The first player that messes up must drink",
-        "drink": true,
-        "intercourse": true,
-        "forBoysOrGirls": "both",
-        "expectsBoyOrGirl": "both",
-        "sexy": false
-      },
-      {
-        "id": "X",
-        "amountInDeck": 2,
-        "title": "Challenger",
-        "rule": "Challenge %playerX to a random challenge of your choice. The loser drinks half of their drink",
         "drink": true,
         "intercourse": true,
         "forBoysOrGirls": "both",
