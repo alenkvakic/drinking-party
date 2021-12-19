@@ -4,7 +4,7 @@ A drinking game to play with friends - distinguishes between male and female for
 
 Live-Demo: https://drinking-party.vercel.app/
 
-This project was done just for fun to showcase on a real world example how quickly you can convert an idea into something workable, playable. It was made quickly and in a rush so no clean code or style guides were followed.
+This project was done just for fun to showcase on a real world example how quickly you can convert an idea into something workable and playable. It was made quickly and in a rush so no clean code, style guides or best practices architecture was followed. There might even be some bugs, but al least my friends and me could play and have some fun!
 
 The app is auto-deployed on every push via vercel and can be tested here: https://drinking-party.vercel.app/
 
